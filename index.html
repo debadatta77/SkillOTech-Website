@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hackathon</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navbar {
+            background-color: #0B2C90;
+            height: 3.5rem;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-left: 2rem;
+        }
+
+        .image a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .image a:hover {
+            background: none;
+            color: white;
+            padding: 0;
+        }
+
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 550;
+            padding-left: 0.625rem;
+            margin: 0;
+        }
+
+        img {
+            height: 3rem;
+            width: 7.5rem;
+            padding: 0;
+            margin-left: 0;
+            /* Removed margin-left */
+        }
+
+        ul {
+            display: flex;
+            gap: 1.875rem;
+            list-style: none;
+            margin-right: 3.9rem;
+        }
+
+        li {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content a:hover {
+            background-color: whitesmoke;
+            color: black;
+            transition: ease-in-out 0.3s;
+            padding: 0.3125rem 0.625rem;
+            border-radius: 0.3125rem;
+        }
+
+        .hero_section {
+            width: 100%;
+            height: 90vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* make sure border sizing doesn't grow layout */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* center-area wrapper */
+        .container {
+            width: 90%;
+            max-width: 900px;
+            /* constrains the width on large screens */
+            margin: 2rem auto;
+            border-radius: 20px;
+            border: 4.5rem solid #0B2C90;
+            /* <-- blue border you wanted */
+            background: transparent;
+            /* keep border visible (no same-color bg) */
+            overflow: hidden;
+            /* optionally add subtle shadow */
+            box-shadow: 0 8px 24px rgba(11, 44, 144, 0.08);
+        }
+
+        /* inner white card that holds image + form */
+        .login_section {
+            display: flex;
+            width: 100%;
+            background-color: #ffffff;
+            /* white inner area */
+            border-radius: 14px;
+            /* slightly smaller to keep gap from outer border */
+            overflow: hidden;
+        }
+
+        /* image side */
+        .image_section {
+            flex: 1;
+            min-width: 260px;
+            background: url("./Rectangle 3.png") no-repeat center/cover;
+        }
+
+        /* form side */
+        .login_content {
+            flex: 1;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        /* form elements */
+        .login_content h1 {
+            font-size: 1.9rem;
+            margin: 0;
+            text-align: center;
+        }
+
+        .login_content input {
+            width: 100%;
+            padding: 0.75rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+        }
+
+        #submit {
+            background-color: #0B2C90;
+            /* blue button */
+            color: #fff;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* responsive tweaks (keep layout stacked on small screens) */
+        @media (max-width: 700px) {
+            .login_section {
+                flex-direction: column;
+            }
+
+            .image_section {
+                min-height: 180px;
+                width: 100%;
+            }
+        }
+
+
+        .image_section {
+            flex: 1;
+            min-width: 260px;
+            background: url("./assets/Rectangle 3.png") no-repeat center center;
+            background-size: cover;
+            /* makes it fill the div */
+            height: auto;
+            /* adapts to container height */
+        }
+
+
+        .login_content {
+            flex: 1;
+            padding: 2rem;
+            background-color: azure;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .login_content h1 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .login_content label {
+            font-size: 1rem;
+        }
+
+        .login_content input {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            border: 1px solid black;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        #submit {
+            background-color: blue;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .footer {
+            background-color: #0B2C90;
+            padding: 2rem 0;
+            text-align: center;
+            width: 100%;
+            height: 6.5rem;
+        }
+
+        .Copyright {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0.4rem 0;
+            /* Add margin instead of br tags */
+        }
+
+        .developer {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .developer:hover {
+            transition: ease-in-out 0.3s;
+            background-color: whitesmoke;
+            color: #000;
+        }
+
+        .signin a {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="image">
+            <a href="#">
+                <img src="assets/SKILLO-8a955eb4.png" alt="">
+                <p class="logo-text">SkillOTech</p>
+            </a>
+        </div>
+        <div class="content">
+            <ul>
+                <li><a href="./home/home.html">Home</a></li>
+                <li><a href="./table/table.html">Table</a></li>
+                <li><a href="./courses/course.html">Courses</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="hero_section">
+        <div class="container">
+            <div class="login_section">
+                <div class="image_section"></div> <!-- no <img> here -->
+                <div class="login_content">
+                    <div class="text">
+                        <h1>WELCOME TO QUICKTRACK</h1>
+                    </div>
+                    <div class="login-text">
+                        <label for="Username">Enter Email ID</label><br>
+                        <input type="text" placeholder="Enter Your Email ID"><br>
+                        <label for="Password">Enter Password</label><br>
+                        <input type="password" placeholder="Enter your Password"><br>
+                        <input type="submit" id="submit">
+                    </div>
+                    <div class="OR">
+                        <div class="or"></div>
+                        <div class="space"></div> OR <div class="space"></div>
+                        <div class="or"></div>
+                    </div>
+                    <div class="signin">
+                        <h3><a href="#">Sign in with google</a></h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <div class="footer">
+            <p class="Copyright">Copyright © 2025 SkillOTech. All rights reserved</p>
+            <p class="Copyright">
+                Developed by <a
+                    href="https://www.linkedin.com/in/debadatta-parida-4430a5276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    class="developer">Debadatta</a> & <a
+                    href="https://www.linkedin.com/in/priyansu-sekhar-malana-9186b12a9?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    class="developer">Priyansu</a>
+            </p>
+        </div>
+    </footer>
+</body>
+
+</html>
