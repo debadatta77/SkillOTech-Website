@@ -4,259 +4,278 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkillOTech</title>
+    <title>Hackathon</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
+        :root {
+            --blue: #0B2C90;
+            --muted: #f3f3f3;
+            --card-radius: 14px;
+            --gap: 1rem;
+            --max-width: 1200px;
         }
 
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, Arial, sans-serif;
+            color: #111;
+            background: #fff;
+        }
+
+        /* NAVBAR */
         .navbar {
-            background-color: #0B2C90;
-            height: 3.5rem;
+            background: var(--blue);
             width: 100%;
             display: flex;
+            align-items: center;
             justify-content: space-between;
+            padding: 0.5rem 1rem;
         }
 
         .image {
             display: flex;
-            justify-content: center;
             align-items: center;
-            padding-left: 2rem;
+            gap: .5rem;
         }
 
-        .image a {
-            display: flex;
-            align-items: center;
-            text-decoration: none;
-        }
-
-        .image a:hover {
-            background: none;
-            color: white;
-            padding: 0;
-        }
-
-        .content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .image img {
+            height: 2.6rem;
+            width: auto;
+            display: block;
         }
 
         .logo-text {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: 550;
-            padding-left: 0.625rem;
+            color: #fff;
+            font-weight: 600;
+            font-size: 1.05rem;
             margin: 0;
         }
 
-        img {
-            height: 3rem;
-            width: 7.5rem;
-            padding: 0;
-            margin-left: 0;
-            /* Removed margin-left */
-        }
-
-        ul {
+        .content ul {
             display: flex;
-            gap: 1.875rem;
+            gap: 1.2rem;
             list-style: none;
-            margin-right: 3.9rem;
+            margin: 0;
+            padding: 0;
+            align-items: center;
         }
 
-        li {
-            font-size: 1.25rem;
+        .content a {
+            color: #fff;
+            text-decoration: none;
             font-weight: 600;
         }
 
-        a {
-            color: white;
-            text-decoration: none;
-        }
-
         .content a:hover {
-            background-color: whitesmoke;
-            color: black;
-            transition: ease-in-out 0.3s;
-            padding: 0.3125rem 0.625rem;
-            border-radius: 0.3125rem;
+            background: whitesmoke;
+            color: #000;
+            padding: .25rem .5rem;
+            border-radius: .25rem;
+            transition: all .2s
         }
 
+        /* small-screen menu toggle (simple) */
+        .menu-toggle {
+            display: none;
+            background: transparent;
+            border: 0;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        /* HERO / FRAME */
         .hero_section {
             width: 100%;
-            height: 90vh;
+            padding: 2rem 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
         }
 
-        /* make sure border sizing doesn't grow layout */
-        * {
-            box-sizing: border-box;
-        }
-
-        /* center-area wrapper */
-        .container {
-            width: 90%;
-            max-width: 900px;
-            /* constrains the width on large screens */
-            margin: 2rem auto;
+        .frame {
+            background: var(--blue);
+            padding: 1.25rem;
+            /* blue frame thickness (responsive) */
             border-radius: 20px;
-            border: 4.5rem solid #0B2C90;
-            /* <-- blue border you wanted */
-            background: transparent;
-            /* keep border visible (no same-color bg) */
-            overflow: hidden;
-            /* optionally add subtle shadow */
-            box-shadow: 0 8px 24px rgba(11, 44, 144, 0.08);
+            width: 95%;
+            max-width: var(--max-width);
         }
 
-        /* inner white card that holds image + form */
+        .container {
+            background: #ffffff;
+            border-radius: var(--card-radius);
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(11, 44, 144, 0.08);
+        }
+
+        /* login split layout */
         .login_section {
             display: flex;
-            width: 100%;
-            background-color: #ffffff;
-            /* white inner area */
-            border-radius: 14px;
-            /* slightly smaller to keep gap from outer border */
-            overflow: hidden;
+            gap: 0;
+            min-height: 320px;
+            align-items: stretch;
         }
-
-        /* image side */
-        .image_section {
-            flex: 1;
-            min-width: 260px;
-            background: url("./Rectangle 3.png") no-repeat center/cover;
-        }
-
-        /* form side */
-        .login_content {
-            flex: 1;
-            padding: 2rem;
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        /* form elements */
-        .login_content h1 {
-            font-size: 1.9rem;
-            margin: 0;
-            text-align: center;
-        }
-
-        .login_content input {
-            width: 100%;
-            padding: 0.75rem;
-            font-size: 1rem;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        #submit {
-            background-color: #0B2C90;
-            /* blue button */
-            color: #fff;
-            padding: 0.8rem 1rem;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-        }
-
-        /* responsive tweaks (keep layout stacked on small screens) */
-        @media (max-width: 700px) {
-            .login_section {
-                flex-direction: column;
-            }
-
-            .image_section {
-                min-height: 180px;
-                width: 100%;
-            }
-        }
-
 
         .image_section {
             flex: 1;
             min-width: 260px;
-            background: url("assets/Rectangle 3.png") no-repeat center center;
+            background: url("./assets/Rectangle 3.png") no-repeat center/cover;
             background-size: cover;
-            /* makes it fill the div */
-            height: auto;
-            /* adapts to container height */
         }
-
 
         .login_content {
             flex: 1;
             padding: 2rem;
-            background-color: azure;
             display: flex;
             flex-direction: column;
-            align-items: center;
+            justify-content: center;
+            gap: .75rem;
         }
 
         .login_content h1 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
+            font-size: 1.6rem;
+            margin: 0;
             text-align: center;
         }
 
         .login_content label {
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .login_content input {
             width: 100%;
-            padding: 0.75rem;
-            margin-bottom: 1rem;
-            border: 1px solid black;
+            padding: .75rem;
+            border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 1rem;
         }
 
         #submit {
-            background-color: blue;
-            color: white;
-            font-size: 1.2rem;
+            background: var(--blue);
+            color: #fff;
+            border: 0;
+            padding: .75rem 1rem;
+            border-radius: 8px;
             cursor: pointer;
-            border-radius: 5px;
+            font-size: 1rem;
         }
 
+        /* footer */
         .footer {
-            background-color: #0B2C90;
-            padding: 2rem 0;
+            background: var(--blue);
+            padding: 1.25rem 0;
             text-align: center;
-            width: 100%;
-            height: 6.5rem;
         }
 
         .Copyright {
-            color: white;
-            font-size: 1.4rem;
-            margin: 0.4rem 0;
-            /* Add margin instead of br tags */
+            color: #fff;
+            margin: .25rem 0;
+            font-size: 1rem;
+            text-decoration: none;
         }
 
         .developer {
-            color: white;
+            color: #fff;
             text-decoration: none;
             font-weight: 600;
         }
 
         .developer:hover {
-            transition: ease-in-out 0.3s;
-            background-color: whitesmoke;
-            color: #000;
+            text-decoration: none;
         }
 
+        /* small spacing helpers */
         .signin a {
-            text-align: center;
-            font-size: 1.2rem;
             color: #000;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* RESPONSIVE ADJUSTMENTS */
+        @media (max-width:1100px) {
+            :root {
+                --max-width: 980px;
+            }
+
+            .frame {
+                padding: 1rem;
+            }
+
+            .login_content {
+                padding: 1.25rem;
+            }
+        }
+
+        @media (max-width:800px) {
+
+            /* switch to stacked layout */
+            .login_section {
+                flex-direction: column;
+            }
+
+            .image_section {
+                width: 100%;
+                min-height: 220px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .content ul {
+                display: none;
+            }
+
+            /* hide desktop menu */
+            .frame {
+                padding: .75rem;
+            }
+
+            .login_content {
+                padding: 1rem;
+            }
+        }
+
+        @media (max-width:480px) {
+            .image img {
+                height: 2.2rem;
+            }
+
+            .logo-text {
+                font-size: 0.95rem;
+            }
+
+            .login_content h1 {
+                font-size: 1.25rem;
+            }
+
+            .login_content input {
+                padding: .6rem;
+            }
+
+            #submit {
+                padding: .6rem;
+                font-size: .95rem;
+            }
+
+            .frame {
+                padding: .5rem;
+                border-radius: 14px;
+            }
+
+            .container {
+                border-radius: 12px;
+            }
+        }
+
+        /* Accessibility / touch targets */
+        a,
+        button,
+        input {
+            -webkit-tap-highlight-color: transparent;
         }
     </style>
 </head>
@@ -279,31 +298,32 @@
     </div>
 
     <div class="hero_section">
-        <div class="container">
-            <div class="login_section">
-                <div class="image_section"></div> <!-- no <img> here -->
-                <div class="login_content">
-                    <div class="text">
-                        <h1>WELCOME TO QUICKTRACK</h1>
-                    </div>
-                    <div class="login-text">
-                        <label for="Username">Enter Email ID</label><br>
-                        <input type="text" placeholder="Enter Your Email ID"><br>
-                        <label for="Password">Enter Password</label><br>
-                        <input type="password" placeholder="Enter your Password"><br>
-                        <input type="submit" id="submit">
-                    </div>
-                    <div class="OR">
-                        <div class="or"></div>
-                        <div class="space"></div> OR <div class="space"></div>
-                        <div class="or"></div>
-                    </div>
-                    <div class="signin">
-                        <h3><a href="#">Sign in with google</a></h3>
+        <div class="frame">
+            <div class="container">
+                <div class="login_section">
+                    <div class="image_section"></div> <!-- no <img> here -->
+                    <div class="login_content">
+                        <div class="text">
+                            <h1>WELCOME TO QUICKTRACK</h1>
+                        </div>
+                        <div class="login-text">
+                            <label for="Username">Enter Email ID</label><br>
+                            <input type="text" placeholder="Enter Your Email ID"><br>
+                            <label for="Password">Enter Password</label><br>
+                            <input type="password" placeholder="Enter your Password"><br>
+                            <input type="submit" id="submit">
+                        </div>
+                        <div class="OR">
+                            <div class="or"></div>
+                            <div class="space"></div> OR <div class="space"></div>
+                            <div class="or"></div>
+                        </div>
+                        <div class="signin">
+                            <h3><a href="#">Sign in with google</a></h3>
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
     <footer>
@@ -320,8 +340,4 @@
     </footer>
 </body>
 
-
 </html>
-
-
-
