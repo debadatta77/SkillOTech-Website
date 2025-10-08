@@ -1,118 +1,152 @@
+/* Responsive, mobile-first CSS for course page */
+:root {
+    --blue: #0B2C90;
+    --accent: #0EA66D;
+    --muted: #f6f6f6;
+    --card-radius: 1rem;
+    --gap: 1rem;
+    --max-width: 1200px;
+    --ui-padding: 1rem;
+    --text-dark: #111;
+}
+
+* {
+    box-sizing: border-box
+}
+
+html,
+body {
+    height: 100%
+}
+
 body {
     margin: 0;
     padding: 0;
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--text-dark);
+    -webkit-font-smoothing: antialiased;
 }
 
+/* NAVBAR */
 .navbar {
-    background-color: #0B2C90;
-    height: 3.5rem;
+    background-color: var(--blue);
     width: 100%;
     display: flex;
+    align-items: center;
     justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 1rem;
+    position: sticky;
+    top: 0;
+    z-index: 60;
 }
 
 .image {
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding-left: 2rem;
+    gap: .6rem;
 }
 
 .image a {
     display: flex;
     align-items: center;
+    gap: .6rem;
     text-decoration: none;
+    color: inherit;
 }
 
-.image a:hover {
-    background: none;
-    color: white;
-    padding: 0;
-}
-
-.content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.image img {
+    height: 2.6rem;
+    width: auto;
+    display: block;
 }
 
 .logo-text {
-    color: white;
-    font-size: 1.5rem;
-    font-weight: 550;
-    padding-left: 0.625rem;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
     margin: 0;
 }
 
-img {
-    height: 3rem;
-    width: 7.5rem;
-    padding: 0;
-    margin-left: 0;
-    /* Removed margin-left */
-}
-
-ul {
+/* nav links */
+.content ul {
     display: flex;
-    gap: 1.875rem;
+    gap: 1rem;
     list-style: none;
-    margin-right: 3.9rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
 }
 
-li {
-    font-size: 1.25rem;
-    font-weight: 600;
-}
-
-a {
-    color: white;
+.content a {
+    color: #fff;
     text-decoration: none;
+    font-weight: 600;
+    padding: .25rem .5rem;
+    border-radius: .25rem;
 }
 
 .content a:hover {
-    background-color: whitesmoke;
-    color: black;
-    transition: ease-in-out 0.3s;
-    padding: 0.3125rem 0.625rem;
-    border-radius: 0.3125rem;
+    background: rgba(255, 255, 255, 0.12);
 }
 
+/* PAGE LAYOUT */
+.courses {
+    max-width: var(--max-width);
+    margin: 2rem auto;
+    padding: 0 var(--ui-padding);
+}
+
+/* Heading */
 .heading {
     text-align: center;
-    margin: 4rem 0;
+    margin: 0 0 2rem;
 }
 
+.heading h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+.heading h3 {
+    margin: .75rem 0 0;
+    font-weight: 500;
+    color: #222;
+    font-size: 1rem;
+}
+
+/* CARDS GRID - responsive */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: clamp(.75rem, 2vw, 2rem);
+    align-items: start;
+}
+
+/* CARD */
 .card {
-    border-radius: 1rem;
-    height: 28rem;
-    /* Increased height to accommodate all content */
-    width: 20rem;
-    background-color: white;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    background: #fff;
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 20px rgba(11, 44, 144, 0.06);
     overflow: hidden;
-    transition: transform 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
+    min-height: 22rem;
+    transition: transform .18s ease, box-shadow .18s ease;
 }
 
+/* hover lift */
 .card:hover {
-    transform: translateY(-0.3rem);
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px rgba(11, 44, 144, 0.12);
 }
 
-.card-row {
-    display: flex;
-    justify-content: center;
-    gap: 4rem;
-    margin-bottom: 4rem;
-}
-
+/* image area */
 .card-image {
-    height: 55%;
     width: 100%;
-    border-radius: 0.5rem 0.5rem 0 0;
+    height: 12rem;
     overflow: hidden;
-    margin-bottom: 0;
+    background: #eee;
 }
 
 .course-image {
@@ -122,132 +156,227 @@ a {
     display: block;
 }
 
+/* text content */
 .card-text {
-    padding: 0.5rem;
-    text-align: left;
-    margin: 0 0.55rem;
-    min-height: 5rem;
-    /* Adjusted min-height */
+    padding: .9rem;
     display: flex;
     flex-direction: column;
+    gap: .4rem;
+    flex: 1 1 auto;
 }
 
 .course-title {
-    font-size: 1.25rem;
-    margin: 0.5rem 0;
-    line-height: 1.4;
+    font-size: 1.05rem;
+    margin: 0;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .course-description {
-    font-size: 0.9rem;
-    margin: 0.5rem 0;
+    margin: 0;
+    color: #333;
+    font-size: .9rem;
     line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    /* Allow 3 lines for longer descriptions */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    display: block;
 }
 
+/* duration / fees row */
 .duration-fees {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    /* margin: 0.5rem 0.55rem; */
-    padding: 0.5rem;
-    font-size: 0.9rem;
+    justify-content: space-between;
+    padding: .6rem .9rem;
+    gap: .5rem;
     font-weight: 600;
+    font-size: .95rem;
 }
 
-.fas.fa-clock,
-.fees {
+.duration {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    color: #333;
+}
+
+.fas.fa-clock {
     color: orange;
 }
 
+/* bottom area */
 .more {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    /* margin: auto; */
-    padding: 0.8rem;
-    /* margin-top: auto; */
-    /* Push to bottom of card */
+    justify-content: space-between;
+    padding: .6rem .9rem;
+    gap: .5rem;
+    margin-top: auto;
+    /* push to bottom */
 }
 
 .view-more {
-    color: #0B2C90;
+    color: var(--blue);
+    font-weight: 600;
     cursor: pointer;
     margin: 0;
-    font-size: 1rem;
 }
 
 .mode-btn {
-    background-color: #0B2C90;
-    color: white;
-    border: none;
-    padding: 0.3125rem 0.625rem;
-    border-radius: 0.3125rem;
+    background: var(--blue);
+    color: #fff;
+    border: 0;
+    padding: .35rem .6rem;
+    border-radius: .4rem;
     cursor: pointer;
-    font-size: 0.875rem;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: .9rem;
 }
 
+/* footer */
 .footer {
-    background-color: #0B2C90;
-    padding: 2rem 0;
+    background: var(--blue);
+    padding: 1rem 0;
     text-align: center;
-    width: 100%;
-    height: 2.5rem;
+    color: #fff;
+    margin-top: 2rem;
 }
 
 .Copyright {
-    color: white;
-    font-size: 1.4rem;
-    margin: 0.4rem 0;
-    /* Add margin instead of br tags */
+    color: #fff;
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
 }
 
 .developer {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-weight: 600;
 }
 
 .developer:hover {
-    transition: ease-in-out 0.3s;
-    background-color: whitesmoke;
-    color: #000;
+    text-decoration: none;
+    color: #fff;
+    opacity: .9;
 }
 
-/* Medium devices (tablets) */
-@media (max-width: 1024px) {
-    .card {
-        width: 45%;
-        margin-bottom: 2rem;
+/* UTILITIES */
+.container-center {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* RESPONSIVE ADJUSTMENTS */
+
+/* Medium screens */
+@media (min-width: 900px) and (max-width: 1199px) {
+    .heading h1 {
+        font-size: 1.9rem;
+    }
+
+    .card-image {
+        height: 11rem;
     }
 }
 
-/* Small devices (phones) */
+/* Tablets / small laptops */
+@media (max-width: 899px) {
+    .heading {
+        margin-top: 1.5rem;
+    }
+
+    .card-image {
+        height: 10rem;
+    }
+
+    .course-image {
+        object-position: center top;
+    }
+
+    .logo-text {
+        font-size: .98rem;
+    }
+}
+
+/* Mobile */
 @media (max-width: 600px) {
-    .card {
-        width: 90%;
-        margin-bottom: 1.5rem;
-    }
-
     .navbar {
-        flex-direction: column;
-        align-items: center;
-        height: auto;
-        padding: 1rem 0;
+        padding: .6rem .8rem;
+        gap: .5rem;
     }
 
-    ul {
-        flex-direction: column;
-        gap: 1rem;
-        margin: 1rem 0;
+    .image img {
+        height: 2.2rem;
     }
 
-    .content {
-        width: 100%;
+    .content ul {
+        display: none;
+    }
+
+    /* hide desktop links on small screens */
+    .courses {
+        margin: 1rem auto;
+        padding: 0 .75rem;
+    }
+
+    .heading h1 {
+        font-size: 1.4rem;
+    }
+
+    .heading h3 {
+        font-size: .95rem;
+    }
+
+    .card-image {
+        height: 9rem;
+    }
+
+    .card {
+        min-height: auto;
+    }
+
+    .course-title {
+        font-size: 1rem;
+    }
+
+    .course-description {
+        -webkit-line-clamp: 3;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .duration-fees {
+        padding: .5rem .75rem;
+        font-size: .9rem;
+    }
+
+    .more {
+        padding: .5rem .75rem;
     }
 }
+
+/* Very small */
+@media (max-width: 380px) {
+    .card-image {
+        height: 8rem;
+    }
+
+    .course-title {
+        font-size: .95rem;
+    }
+
+    .logo-text {
+        display: none;
+    }
+
+    /* save space on tiny widths */
+}
+
+/* Accessibility: focus outlines */
+a:focus,
+button:focus {
+    outline: 3px solid rgba(11, 44, 144, 0.18);
+    outline-offset: 2px;
+}
+
+/* End of file */
